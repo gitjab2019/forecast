@@ -1,0 +1,24 @@
+
+<div class="hero">
+    <div class="heroContainer">
+      <div class="heroMain">
+        <h3 class="city">Mar del Plata</h3>
+        <div *ngIf="pronostico[0]" class="currentDay">
+            {{pronostico[0].Day.IconPhrase}}
+        </div>
+        <div class="heroLabel">
+          <div class="heroCard" id="min">Mínima: {{pronostico[0].Temperature.Minimum.Value}}</div>
+          <div class="heroCard" id="max">Máxima: {{pronostico[0].Temperature.Maximum.Value}}</div>
+          <div class="heroCard" id="dia">Día: {{pronostico[0].Day.IconPhrase}}</div>
+          <div class="heroCard" id="noche">Nocturno: {{pronostico[0].Night.IconPhrase}}</div>
+        </div>
+      </div>
+      <div class="heroSide">
+        <h1>heroSide</h1>
+      </div>
+    </div>
+</div>
+  
+  
+  
+  

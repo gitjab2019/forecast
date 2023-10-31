@@ -1,0 +1,63 @@
+/* Establece la imagen de fondo */
+.hero {
+    margin-top: 1px;
+    background-color: bisque;
+    color: white;
+}
+
+.heroContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 0;
+    background-image: url('src\images\electricStorm.jpg');
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    background-attachment: fixed;
+}
+
+.heroMain{
+    grid-column: 1/4;
+    padding-top: 1em;
+    padding-bottom: 3em;
+    padding-left: 10px;
+    color: white;
+}
+
+
+.city{
+    margin-left: 10px;
+}  
+.currentDay{
+    margin-left: 10px;
+}
+
+.heroLabel{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border-radius: 10px;
+    background-color: rgb(167, 170, 202);
+    margin-left: 10px;
+    width: 35%;
+    height: 50%;
+    grid-gap: 1px; 
+    font-size: 12px;
+}
+
+#min, #max, #dia, #noche {
+    padding: 5px; /* Ajusta el valor de acuerdo a tu preferencia */
+    grid-column: auto;
+    grid-row: auto;
+}
+
+
+
+.heroSide{
+    grid-column: 4/6;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.heroSide:hover{
+    background-color: lightgray;
+}

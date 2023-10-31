@@ -1,0 +1,21 @@
+.mainContainer{
+    display: grid;
+    grid-template-rows: repeat(10,1fr);
+    gap: 0;
+}
+
+app-hero{
+    grid-row: 1/4;
+}
+
+
+.dias{
+    grid-row: 4/7;
+    background-color: grey;
+}
+
+
+.sugerencias{
+    grid-row: 7/11;
+    background-color: rgb(109, 104, 104);
+}
