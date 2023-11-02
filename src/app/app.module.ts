@@ -3,24 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { MainComponent } from './main/main.component';
-import { FooterComponent } from './footer/footer.component';
 import { HeroComponent } from './hero/hero.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    MainComponent,
-    FooterComponent,
-    HeroComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

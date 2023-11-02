@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PronosticoService } from '../services/pronostico.service';
-import { DailyForecast } from '../interfaces/forecast.model';
+import { PronosticoService } from '../core/forecast-service/pronostico.service';
+import { DailyForecast } from '../core/Interfaces';
 
 @Component({
   selector: 'app-hero',

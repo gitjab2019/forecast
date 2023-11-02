@@ -27,4 +27,11 @@ export interface DailyForecast {
     MobileLink: string;
     Link: string;
   }
+
+  export interface IUser {
+    id: number | null;
+    userName: string | null;
+    email: string | null;
+    password: string | null;
+  }
   
