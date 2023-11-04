@@ -17,5 +17,9 @@ export class ApiService {
     public getToAuth(email: string, password: string): Observable<User[]> {
       return this.http.get<User[]>(`${this.baseURL}/users?email=${email}&password=${password}`)
     }
-    
+
+    public addUser(createUser: User): Observable<boolean> {
+      const url = `${this.baseURL}/users`;
+      return this.http.post<boolean>(url, createUser);
+    }    
 }
