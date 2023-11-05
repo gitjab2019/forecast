@@ -10,9 +10,13 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     gap: 0;
-    background-image: url('src\images\electricStorm.jpg');
+   /* background-image: url('src\images\electricStorm.jpg');*/
     background-repeat: no-repeat; /* Evita la repetición de la imagen */
     background-attachment: fixed;
+}
+
+#hContainer{
+background-image:none ;
 }
 
 .heroMain{
@@ -24,12 +28,9 @@
 }
 
 
-.city{
+.city, .currentDay, .currentDate{
     margin-left: 10px;
 }  
-.currentDay{
-    margin-left: 10px;
-}
 
 .heroLabel{
     display: grid;

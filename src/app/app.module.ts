@@ -7,9 +7,11 @@ import { HeroComponent } from './components/hero/hero.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './modules/auth/auth.module';
 
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,34 @@
+.cinco-dias-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Crear 5 columnas iguales */
+    gap: 10px; /* Espacio entre las celdas */
+  }
+  
+  .dia {
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    border: 1px solid #333;
+  }
+  
+  /* Asignar colores diferentes a cada día */
+  .dia:nth-child(1) {
+    background-color: #FF5733;
+  }
+  
+  .dia:nth-child(2) {
+    background-color: #33FF57;
+  }
+  
+  .dia:nth-child(3) {
+    background-color: #5733FF;
+  }
+  
+  .dia:nth-child(4) {
+    background-color: #FF33A6;
+  }
+  
+  .dia:nth-child(5) {
+    background-color: #A633FF;
+  }
+  

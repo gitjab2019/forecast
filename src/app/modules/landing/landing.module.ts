@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LandingComponent } from './components/landing/landing-component.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainComponent } from 'src/app/components/main/main.component';
-import { FooterComponent } from 'src/app/components/footer/footer.component';
-
-import { MainRoutingModule } from './landing-routing.module';
-import { LandingComponent } from './components/landing/landing-component.component';
 import { HeroComponent } from 'src/app/components/hero/hero.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { MainRoutingModule } from './landing-routing.module';
+import { CincoDiasComponent } from 'src/app/components/cinco-dias/cinco-dias.component';
 
 
 @NgModule({
@@ -15,7 +15,8 @@ import { HeroComponent } from 'src/app/components/hero/hero.component';
     HeaderComponent,
     MainComponent,
     FooterComponent,
-    HeroComponent
+    HeroComponent,
+    CincoDiasComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import { HeroComponent } from 'src/app/components/hero/hero.component';
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    HeroComponent
+    HeroComponent,
+    CincoDiasComponent
   ]
 })
 export class MainModule { }
