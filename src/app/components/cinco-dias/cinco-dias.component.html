@@ -1,9 +1,6 @@
 <div class="cinco-dias-container">
-    <div class="dia" (click)="seleccionarDia(0)">Día 1</div>
-    <div class="dia" (click)="seleccionarDia(1)">Día 2</div>
-    <div class="dia" (click)="seleccionarDia(2)">Día 3</div>
-    <div class="dia" (click)="seleccionarDia(3)">Día 4</div>
-    <div class="dia" (click)="seleccionarDia(4)">Día 5</div>
+  <div class="dia" *ngFor="let fecha of fechas; let i = index" (click)="seleccionarDia(i)">{{ fecha }}</div>
+  <div class="diaIconos" *ngFor="let dia of pronostico; let i = index">
+    <img [src]="'assets/icons/' + dia.Day.Icon + '.png'" alt="Icono del día {{ i + 1 }}">
   </div>
-  
-  
+</div>

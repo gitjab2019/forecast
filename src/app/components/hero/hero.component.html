@@ -1,15 +1,15 @@
 
 <div class="hero">
-    <div class="heroContainer" id="hContainer" [ngStyle]="{backgroundImage:'url('+ fondoImagen +')'}">
-      <div class="heroMain">
+  <div class="heroContainer" id="hContainer">
+    <div class="heroMain">
         <h3 class="city">Mar del Plata</h3>
         <div *ngIf="pronostico[diaSeleccionado]" class="currentDate">
-          {{pronostico[diaSeleccionado].Date}}
+          {{ pronostico[diaSeleccionado].Date | date:'dd/MM/yyyy' }}
         </div>
-        <div *ngIf="pronostico[0]" class="currentDay">
-            {{pronostico[0].Day.IconPhrase}}
+        <div *ngIf="pronostico[diaSeleccionado]" class="currentDay">
+            {{pronostico[diaSeleccionado].Day.IconPhrase}}
         </div>
-        <div class="heroLabel">
+        <div class="heroLabel" [ngStyle]="{'background-image': 'url(assets/images/' + fondoImagen + ')'}">
           <div class="heroCard" id="min">Mínima: {{pronostico[diaSeleccionado].Temperature.Minimum.Value}}</div>
           <div class="heroCard" id="max">Máxima: {{pronostico[diaSeleccionado].Temperature.Maximum.Value}}</div>
           <div class="heroCard" id="dia">Día: {{pronostico[diaSeleccionado].Day.IconPhrase}}</div>
