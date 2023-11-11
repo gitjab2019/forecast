@@ -16,7 +16,7 @@ export class HeroComponent implements OnInit {
   pronostico: DailyForecast[] = [];
   diaSeleccionado: number = 0;
   fondoImagen: string ='Clear.jpg';
- 
+  
 
   
   createDefaultDailyForecast(): DailyForecast {
@@ -80,13 +80,13 @@ export class HeroComponent implements OnInit {
 
   }
 
+  convertirACelcius(temp: number): number {
+    return Math.floor(((temp - 32) * 5) / 9);
+  }
+
   initializePronostico(): void {
     this.pronostico = new Array(5).fill(null).map(() => this.createDefaultDailyForecast());
   }
-
-
-  
-  
 
 }
 

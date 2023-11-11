@@ -1,14 +1,19 @@
-.cinco-dias-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1px;
-  text-align: center; /* Centra el contenido en las celdas */
-}
+
+  .cinco-dias-container {
+    margin-left: 12px;
+    display: grid;
+    grid-template-columns: repeat(5, calc(20% + 12px));
+    gap: 9px;
+    text-align: center;
+    padding: 10px;
+  }
+
 
 .dia, .diaIconos {
   padding: 10px;
   font-weight: bold;
   border: 1px;
+  border-radius: 5px;
   transition: background-color 0.3s; /* Transición suave del color de fondo */
 }
 
@@ -39,5 +44,9 @@
 
 /* Estilos de hover */
 .dia:hover {
+  background-color: #23e4f5; /* Cambia el color de fondo al pasar el cursor por encima */
+}
+
+.diaIconos:hover {
   background-color: #23e4f5; /* Cambia el color de fondo al pasar el cursor por encima */
 }

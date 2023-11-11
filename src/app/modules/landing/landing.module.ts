@@ -8,6 +8,7 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { MainRoutingModule } from './landing-routing.module';
 import { CincoDiasComponent } from 'src/app/components/cinco-dias/cinco-dias.component';
 import { ChatComponent } from 'src/app/components/a-side/a-side.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,18 +17,21 @@ import { ChatComponent } from 'src/app/components/a-side/a-side.component';
     MainComponent,
     FooterComponent,
     HeroComponent,
-    CincoDiasComponent
+    CincoDiasComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     MainComponent,
     HeroComponent,
-    CincoDiasComponent
+    CincoDiasComponent,
+    ChatComponent
   ]
 })
 export class MainModule { }

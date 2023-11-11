@@ -1,26 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class ChatGptService {
-  private apiUrl = 'https://api.openai.com/v1/engines/davinci/completions';
-  private apiKey = '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'; // Reemplaza con tu clave API
+export class ChatgptService {
 
-  constructor(private http: HttpClient) {}
+  header = new HttpHeaders({
+    "Content-Type": "application/json",
+    "Authorization": "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"
+  })
 
-  sendPrompt(prompt: string): Observable<any> {
-    const headers = new HttpHeaders()
-      .set('Authorization', `Bearer ${this.apiKey}`)
-      .set('Content-Type', 'application/json');
+  constructor(
+    private http: HttpClient
+  ) { }
 
-    const data = {
-      prompt: prompt,
-      max_tokens: 50, 
-    };
-
-    return this.http.post(this.apiUrl, data, { headers });
+  gptTest(prompt: string) {
+    return this.http.post('https://api.openai.com/v1/completions', {"model": "text-davinci-003", "prompt": prompt, "temperature": 0, "max_tokens": 2048}, {headers: this.header});
   }
 }

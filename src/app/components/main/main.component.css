@@ -1,20 +1,23 @@
 .mainContainer {
     display: grid;
-    grid-template-rows: repeat(10, minmax(0, 1fr)); /* Filas de igual altura */
-    gap: 10px; /* Agrega espacio entre los elementos si es necesario */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto auto auto auto; /* Ajusta la altura de las filas según sea necesario */
+    gap: 5px; /* Agrega espacio entre los elementos si es necesario */
 }
 
 app-hero {
-    grid-row: auto; /* Deja que se coloque automáticamente en la siguiente fila */
-    margin-bottom: 10px;
+    grid-column: 1/4;
+    grid-row: 1/2; /* Ajusta la posición en la fila deseada */
 }
 
 cinco-dias {
-    grid-row: auto; /* Deja que se coloque automáticamente en la siguiente fila */
+    margin-top: 1em;
+    grid-column: 1/4;
+    grid-row: 2/3; /* Ajusta la posición en la siguiente fila */
     background-color: white;
 }
 
-.sugerencias {
-    grid-row: auto; /* Deja que se coloque automáticamente en la siguiente fila */
-    background-color: rgb(109, 104, 104);
+app-chat {
+    grid-row: 3/4; /* Ajusta la posición en la siguiente fila */
+    grid-column: 1/4;
 }

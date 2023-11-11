@@ -27,8 +27,6 @@ export class CincoDiasComponent {
     }
   }
 
- 
-
   seleccionarDia(dia: number) {
     this.seleccionDiaService.setDiaSeleccionado(dia);
   }
