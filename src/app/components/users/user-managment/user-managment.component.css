@@ -1,0 +1,7 @@
+.custom-container {
+    display: flex;
+  }
+
+.custom-component {
+    width: 50%;
+  }

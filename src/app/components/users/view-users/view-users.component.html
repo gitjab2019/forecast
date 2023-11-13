@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Users</h2>
+  
+    <!-- Lista de tareas ordenadas por prioridad -->
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Delete</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of inputUsers">
+          <td>{{ user.id }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.password }}</td>
+          <td><button class="btn btn-danger" (click)="deleteUser(user.id!)">X</button></td>
+          <td><button class="btn btn-primary" (click)="editUser(user)">E</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -17,6 +17,14 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Contacto</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        </li>
+        <div *ngIf="isAdminUser()">
+          <li> 
+            <button type="button" (click)="goToUserManagment()"> User Managment </button>
+          </li>
+        </div>
       </ul>
     </div>
   </nav>

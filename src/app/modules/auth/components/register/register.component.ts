@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/Models';
-import { ApiService } from 'src/app/core/api-service/api.service';
+import { ApiService } from 'src/app/core/services/api-service/api.service';
 
 @Component({
   selector: 'app-register',
@@ -51,6 +51,8 @@ export class RegisterComponent implements OnInit{
     })
   }
 
-
+  goToLogin() {
+    this.router.navigate(["/login"]);
+  }
 
 }
