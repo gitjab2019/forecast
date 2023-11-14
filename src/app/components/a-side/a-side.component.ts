@@ -22,15 +22,17 @@ export class ChatComponent implements OnInit {
   enviando: boolean = false;
   sugerencias: string[] = [];
   diaSeleccionado: number = 0;
+  isLoading: boolean = true;
 
   constructor(private gpt: ChatgptService, private datoPronostico: PronosticoService, private seleccionDiaService: SeleccionDiaService) 
   {}
 
   configuration = {
-    apiKey: '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'
+    apiKey: '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'
   };
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.datoPronostico.get5dias().subscribe((data: any) => {
       this.pronostico = data.DailyForecasts;
       this.prompt = this.buildPrompt();
@@ -50,7 +52,7 @@ export class ChatComponent implements OnInit {
       }).catch(error => {
         console.error('Error listing models:', error);
       });
-      
+      this.isLoading = false;  
     });
 
     this.seleccionDiaService.diaSeleccionado$.subscribe((dia: number) => {
@@ -63,10 +65,8 @@ export class ChatComponent implements OnInit {
   
   parseModels(models: string): string[] {
     try {
-      // Dividir la cadena en un array usando un separador (puedes ajustar el separador según la estructura de tu cadena)
       const modelsArray = models.split('\n');
       
-      // Filtrar cualquier cadena vacía o no deseada
       const filteredArray = modelsArray.filter(item => item.trim() !== '');
   
       return filteredArray;
@@ -102,7 +102,7 @@ export class ChatComponent implements OnInit {
   }
 
   buildPrompt(): string {
-    let prompt = 'En idioma español, según el Pronóstico, dime que puedo hacer cada día en Mar del Plata, Argentina, trata de ser divertido:\n';
+    let prompt = 'En idioma español, según el Pronóstico, dime que puedo hacer cada día en Mar del Plata(Argentina), menciona lugares de la ciudad y ropa apropiada, trata de ser divertido:\n';
   
     for (let i = 0; i < this.pronostico.length; i++) {
       const fecha = this.pronostico[i].Date;

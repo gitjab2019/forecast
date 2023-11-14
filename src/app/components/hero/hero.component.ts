@@ -16,6 +16,7 @@ export class HeroComponent implements OnInit {
   pronostico: DailyForecast[] = [];
   diaSeleccionado: number = 0;
   fondoImagen: string ='Clear.jpg';
+  primeraCarga: boolean = false;
   
 
   
@@ -61,23 +62,25 @@ export class HeroComponent implements OnInit {
   
   ngOnInit() {
     this.initializePronostico(); 
-   
-    this.seleccionDiaService.diaSeleccionado$.subscribe((dia) => {
-    this.diaSeleccionado = dia; 
-    const iconPhrase = this.pronostico[this.diaSeleccionado].Day.IconPhrase;
-    const cleanIconPhrase = iconPhrase.replace(/\s+/g, '').replace(/\//g, '');
-    
-    this.fondoImagen = `${cleanIconPhrase}.jpg`;
-    
-    console.log(this.fondoImagen);
-    console.log('url(assets/images/' + this.fondoImagen + ')');
-    });
-
     this.datoPronostico.get5dias().subscribe((data: any) => {
       this.pronostico = data.DailyForecasts;
-    });
-
-
+    }).add(() => {
+                    this.seleccionDiaService.diaSeleccionado$.subscribe((dia) => {
+                    
+                      if(!this.primeraCarga){
+                      this.diaSeleccionado = 0; 
+                      this.primeraCarga = true;
+                      console.log('primera carga');
+                      } else this.diaSeleccionado = dia; 
+                    const iconPhrase = this.pronostico[this.diaSeleccionado].Day.IconPhrase;
+                    const cleanIconPhrase = iconPhrase.replace(/\s+/g, '').replace(/\//g, '');
+                    
+                    this.fondoImagen = `${cleanIconPhrase}.jpg`;
+                    
+                    console.log(this.fondoImagen);
+                    console.log('url(assets/images/' + this.fondoImagen + ')');
+                    });
+                 });  
   }
 
   convertirACelcius(temp: number): number {
