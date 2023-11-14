@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 class="custom-dialog-title">Add User</h2>
+    <form novalidate (ngSubmit)="createUser()" [formGroup]="userForm" autocomplete="off" class="login-form">
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" formControlName="email" class="form-control" required>
+      </div>
+      <div class="error" *ngIf="userForm.get('email')!.hasError('required')">Email requerido</div>
+  
+  
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" formControlName="password" class="form-control" required>
+      </div>
+      <div class="error" *ngIf="userForm.get('email')!.hasError('required')">Password requerida</div>
+  
+      <button type="submit" class="btn btn-primary btnadd">Crear Usuario</button>
+    </form>
+</div>
+
+  
+  
+  
+  

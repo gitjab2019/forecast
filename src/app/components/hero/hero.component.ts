@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PronosticoService } from '../../core/forecast-service/pronostico.service';
+import { PronosticoService } from '../../core/services/forecast-service/pronostico.service';
 import { DailyForecast } from '../../core/Interfaces';
-import { SeleccionDiaService } from '../../core/seleccionDia/seleccion-dia.service'; 
+import { SeleccionDiaService } from '../../core/services/seleccionDia/seleccion-dia.service'; 
 import { DatePipe } from '@angular/common';
 
 

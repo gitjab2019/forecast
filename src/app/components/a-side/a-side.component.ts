@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ChatgptService } from '../../core/openAI/chatgpt.service';
-import { PronosticoService } from '../../core/forecast-service/pronostico.service';
-import { SeleccionDiaService } from '../../core/seleccionDia/seleccion-dia.service';
+import { ChatgptService } from '../../core/services/openAI/chatgpt.service';
+import { PronosticoService } from '../../core/services/forecast-service/pronostico.service';
+import { SeleccionDiaService } from '../../core/services/seleccionDia/seleccion-dia.service';
 import { DailyForecast } from 'src/app/core/Interfaces';
 import * as OpenAI from 'openai';
 import { DatePipe } from '@angular/common';
@@ -28,7 +28,11 @@ export class ChatComponent implements OnInit {
   {}
 
   configuration = {
+<<<<<<< HEAD
     apiKey: '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'
+=======
+    apiKey: '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'
+>>>>>>> f66e5c7886e24d456d290620168743e64e0a4298
   };
 
   ngOnInit(): void {

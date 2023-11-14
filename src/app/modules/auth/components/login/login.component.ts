@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/core/Models';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../../../core/services/authServices/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -66,9 +66,9 @@ export class LoginComponent {
 
     try {
 
-      let user: User | undefined = await this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
+      let isLogin: boolean = await this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
 
-      if (user) {
+      if (isLogin) {
         this.router.navigate(["/main"]);
       }
       else {
@@ -81,7 +81,6 @@ export class LoginComponent {
     } catch (error) {
       console.log(error);
     }
-
   }
 
   onRegister() {

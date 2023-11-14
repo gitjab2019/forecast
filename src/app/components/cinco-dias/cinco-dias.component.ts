@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { SeleccionDiaService } from '../../core/seleccionDia/seleccion-dia.service'; 
+import { SeleccionDiaService } from '../../core/services/seleccionDia/seleccion-dia.service'; 
 import { DailyForecast } from 'src/app/core/Interfaces';
-import { PronosticoService } from '../../core/forecast-service/pronostico.service';
+import { PronosticoService } from '../../core/services/forecast-service/pronostico.service';
 
 @Component({
   selector: 'app-cinco-dias',
