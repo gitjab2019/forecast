@@ -1,20 +1,26 @@
-<h2 mat-dialog-title class="custom-dialog-title">Editar Usuario</h2>
-<div mat-dialog-content>
-  <form (ngSubmit)="editUser()" class="custom-form">
-    <!-- Tu formulario de edición de tareas aquí -->
-    <div class="form-field">
-      <label for="name">Email:</label>
-      <input type="text" id="name" name="name" [value]="user.email" [(ngModel)]="user.email" required>
+<h2 mat-dialog-title class="custom-dialog-title">Edit User</h2>
+<div mat-dialog-content class="custom-dialog-content">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="custom-form">
+
+    <div class="mb-3">
+      <label for="register-email" class="form-label">Email:</label>
+      <input type="email" id="email" formControlName="email"  class="form-control"/>
+      <span *ngIf="this.userForm.get('email')?.errors?.['pattern']">
+        (Need to be valid email)
+      </span>
     </div>
 
-    <div class="form-field">
-      <label for="lastname">Password:</label>
-      <input id="text" name="lastname" [value]="user.password" [(ngModel)]="user.password" required>
+    <div class="mb-3">
+      <label for="register-password" class="form-label">Password:</label>
+      <input type="text" id="password" formControlName="password"  class="form-control"/>
+      <span *ngIf="this.userForm.get('password')?.errors?.['minlength']">
+        (Minimun 6 characters)
+      </span>
     </div>
 
-    <button type="submit" class="custom-button">Guardar Cambios</button>
+    <div mat-dialog-actions class="custom-dialog-actions">
+      <button mat-button (click)="closeDialog()" class="custom-button">Cancel</button>
+      <button type="submit" mat-button class="custom-button">Save</button>
+    </div>
   </form>
-  <div mat-dialog-actions>
-    <button mat-button (click)="closeDialog()" class="custom-button" >Cancelar</button>
-  </div>
 </div>

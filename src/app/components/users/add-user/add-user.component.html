@@ -6,16 +6,14 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" formControlName="email" class="form-control" required>
       </div>
-      <div class="error" *ngIf="userForm.get('email')!.hasError('required')">Email requerido</div>
-  
-  
+      <div class="error" *ngIf="userForm.get('email')!.hasError('required')">Required email</div>
       <div class="form-group">
-        <label for="password">Contraseña:</label>
+        <label for="password">Password:</label>
         <input type="password" id="password" name="password" formControlName="password" class="form-control" required>
       </div>
-      <div class="error" *ngIf="userForm.get('email')!.hasError('required')">Password requerida</div>
+      <div class="error" *ngIf="userForm.get('password')!.hasError('required')">Required password</div>
   
-      <button type="submit" class="btn btn-primary btnadd">Crear Usuario</button>
+      <button type="submit" class="btn btn-primary btnadd">Create user</button>
     </form>
 </div>
 

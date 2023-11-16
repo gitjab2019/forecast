@@ -6,13 +6,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ChatgptService {
 
+  apiKeyFirstPart = 'sk-kZF0PpZjoWwqsfo3lFb';
+  apiKeySecondPart = 'AT3BlbkFJjBZevpZgeYo4i3ZYVPuP';
+
+  //IMPORTANTE!!! --> EN AUTHRIZATION SE DEBE CONCATENAR O INCLUIR EN UN SOLO STRING apiKeyFirstPart y apiKeySecondPart
   header = new HttpHeaders({
     "Content-Type": "application/json",
-<<<<<<< HEAD:src/app/core/openAI/chatgpt.service.ts
-    "Authorization": "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"
-=======
-    "Authorization": "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"
->>>>>>> f66e5c7886e24d456d290620168743e64e0a4298:src/app/core/services/openAI/chatgpt.service.ts
+    "Authorization": "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"
   })
 
   constructor(

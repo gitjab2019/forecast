@@ -1,13 +1,12 @@
 /* Estilos para centrar el contenido de la página */
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-  }
-  
-  /* Estilos para centrar el contenido del footer */
-  app-footer {
-    margin-top: auto;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+app-footer {
+  margin-top: auto;
+}
   

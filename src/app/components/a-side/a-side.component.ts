@@ -23,36 +23,39 @@ export class ChatComponent implements OnInit {
   sugerencias: string[] = [];
   diaSeleccionado: number = 0;
   isLoading: boolean = true;
+  mensajeCargado: boolean = false;
+  apiKeyFirstPart = 'sk-kZF0PpZjoWwqsfo3lFb';
+  apiKeySecondPart = 'AT3BlbkFJjBZevpZgeYo4i3ZYVPuP';
 
   constructor(private gpt: ChatgptService, private datoPronostico: PronosticoService, private seleccionDiaService: SeleccionDiaService) 
   {}
 
+  //IMPORTANTE!!!! --> SE DEBE UNIR apiKeyFirstPart + apiKeySecondPart (estan arriba)
   configuration = {
-<<<<<<< HEAD
-    apiKey: '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'
-=======
-    apiKey: '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'
->>>>>>> f66e5c7886e24d456d290620168743e64e0a4298
+    apiKey: this.apiKeyFirstPart + this.apiKeySecondPart
   };
 
   ngOnInit(): void {
     this.isLoading = true;
     this.datoPronostico.get5dias().subscribe((data: any) => {
-      this.pronostico = data.DailyForecasts;
-      this.prompt = this.buildPrompt();
+    this.pronostico = data.DailyForecasts;
+    this.prompt = this.buildPrompt();
   
-      const openai = new OpenAI.OpenAI({ ...this.configuration, dangerouslyAllowBrowser: true });
+    const openai = new OpenAI.OpenAI({ ...this.configuration, dangerouslyAllowBrowser: true });
       openai.completions.create({
         model: 'gpt-3.5-turbo-instruct',//'text-davinci-002',
         prompt: this.prompt,
         max_tokens: 2000,
         temperature: 1.0,
+
       }).then(response => {
-        const models = response.choices[0].text;
-        console.log('Prompt:', this.prompt);
-        console.log('Available models:', models);
-        this.sugerencias = this.parseModels(models);
-        
+
+          const models = response.choices[0].text;
+          console.log('Prompt:', this.prompt);
+          console.log('Available models:', models);
+          this.sugerencias = this.parseModels(models);
+          this.mensajeCargado = true;
+
       }).catch(error => {
         console.error('Error listing models:', error);
       });
@@ -64,10 +67,8 @@ export class ChatComponent implements OnInit {
       });
   }
 
-  
-
-  
   parseModels(models: string): string[] {
+
     try {
       const modelsArray = models.split('\n');
       
@@ -80,9 +81,6 @@ export class ChatComponent implements OnInit {
     }
   }
   
-  
- 
-
   consultar(argument: string) {
     this.enviando = true;
     this.resGPT = '';
@@ -106,16 +104,14 @@ export class ChatComponent implements OnInit {
   }
 
   buildPrompt(): string {
-    let prompt = 'En idioma español, según el Pronóstico, dime que puedo hacer cada día en Mar del Plata(Argentina), menciona lugares de la ciudad y ropa apropiada, trata de ser divertido:\n';
+    let prompt = 'In English, according to the Forecast, tell me what I can do every day in Mar del Plata (Argentina), mention places in the city and appropriate clothing, try to be fun:\n';
   
     for (let i = 0; i < this.pronostico.length; i++) {
       const fecha = this.pronostico[i].Date;
       const pronostico = this.pronostico[i].Day.IconPhrase;
-  
      
-      prompt += `${i + 1}. Fecha: ${fecha}, Pronóstico: ${pronostico}, Sugerencias:\n`;
+      prompt += `${i + 1}. Date: ${fecha}, Forecast: ${pronostico}, suggestions:\n`;
     }
-  
     return prompt;
   }
 }

@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  loginImage = "assets/images/forecastAi.png";
   
   private email: string = '';
 
   public user: User = new User({
-    "id":3
-});
+    "id":null
+  });
 
 
   private emailPattern: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -26,10 +28,6 @@ export class LoginComponent {
   })
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
-
-  ngOnInit(): void {
-
-  }
 
   isValidFiled(field: string): boolean | null {
     return this.loginForm.controls[field].errors && this.loginForm.controls[field].touched;
@@ -44,9 +42,9 @@ export class LoginComponent {
     for (const key of Object.keys(errors)) {
       switch (key) {
         case 'required':
-          return "Este campo es requerido.";
+          return "Required field";
         case 'minlength':
-          return `Mínimo ${errors['minlength'].requiredLength} caracteres.`;
+          return `Minimun ${errors['minlength'].requiredLength} characters.`;
       }
     }
 
@@ -57,33 +55,27 @@ export class LoginComponent {
   async onSubmit() {
 
     if (this.loginForm.valid) {
-      // Aquí puedes implementar la lógica para verificar las credenciales de inicio de sesión
-      console.log('Formulario válido. Usuario: ', this.loginForm.value.email);
+      console.log('Valid form. User: ', this.loginForm.value.email);
     } else {
-      // El formulario no es válido, muestra un mensaje de error si es necesario.
-      console.log('Formulario no válido');
+      console.log('Invalid form');
     }
 
     try {
-
       let isLogin: boolean = await this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
 
       if (isLogin) {
         this.router.navigate(["/main"]);
       }
       else {
-
         this.email = this.loginForm.value.email;
-
         this.loginForm.reset({ email: this.email });
       }
-
     } catch (error) {
       console.log(error);
     }
   }
 
   onRegister() {
-    this.router.navigate(["/register"]);
+    this.router.navigate(["/auth/register"]);
   }
 }

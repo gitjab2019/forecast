@@ -23,23 +23,20 @@ export class ApiService {
     public addUser(createUser: User): Observable<boolean> {
       return this.getUsers().pipe(
         switchMap(users => {
-          // Verifica si el usuario ya existe por el email
+          // verificamos que el user exista por email
           const isUserExists = users.some(user => user.email === createUser.email);
   
           if (isUserExists) {
-            // Puedes manejar el error aquí o simplemente devolver un observable con un error
-            alert('The ussers with the mail' + createUser.email + ' already');
-            return throwError('The ussers with the mail' + createUser.email + ' already');
+            alert('The ussers with the mail ' + createUser.email + ' already exists');
+            return throwError(() => new Error('The ussers with the mail ' + createUser.email + ' already exists'));
           }
   
-          // Si el usuario no existe, continúa con la solicitud HTTP para agregarlo
           const url = `${this.baseURL}/users`;
           return this.http.post<boolean>(url, createUser);
         }),
         catchError(error => {
-          // Manejar errores de la solicitud HTTP aquí si es necesario
           console.error('Error al agregar usuario', error);
-          return throwError(error);
+          return throwError(() => error);
         })
       );
     }
@@ -58,9 +55,37 @@ export class ApiService {
       );
     }
 
-    editUser(id: number, updateUser: User): Observable<boolean> {
-      const url = `${this.baseURL}/users/${id}`;
-      return this.http.put<boolean>(url, updateUser);
+    editUser(id: number, updateUser: User): Observable<boolean | string> {
+      console.log(updateUser.email)
+      return this.validateExistingEmail(updateUser.email!).pipe(
+        switchMap(isValid => {
+          if (isValid) {
+            const url = `${this.baseURL}/users/${id}`;
+            return this.http.put<boolean>(url, updateUser).pipe(
+              catchError(error => {
+                console.error('Error during user edit', error);
+                return throwError(() => error);
+              })
+            );
+          } else {
+            return throwError('This email already exists');
+          }
+        }),
+        catchError(error => {
+          console.error('Error during email validation', error);
+          return throwError(() => error);
+        })
+      );
+    }
+
+    public validateExistingEmail(email: string): Observable<boolean> {
+      return this.getUsers().pipe(
+        map(users => users.some(user => user.email === email)),
+        catchError(error => {
+          console.error('Error during email validation', error);
+          return throwError(() => error);
+        })
+      );
     }
     
 }

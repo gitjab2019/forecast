@@ -1,23 +1,20 @@
-.mainContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr auto auto auto auto; /* Ajusta la altura de las filas según sea necesario */
-    gap: 5px; /* Agrega espacio entre los elementos si es necesario */
-}
-
 app-hero {
     grid-column: 1/4;
-    grid-row: 1/2; /* Ajusta la posición en la fila deseada */
+    grid-row: 1/2;
 }
 
 cinco-dias {
     margin-top: 1em;
     grid-column: 1/4;
-    grid-row: 2/3; /* Ajusta la posición en la siguiente fila */
+    grid-row: 2/3;
     background-color: white;
 }
 
 app-chat {
-    grid-row: 3/4; /* Ajusta la posición en la siguiente fila */
+    grid-row: 3/4;
     grid-column: 1/4;
+}
+
+.chat {
+    padding-top: 85px;
 }

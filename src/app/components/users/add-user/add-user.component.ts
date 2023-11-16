@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EMPTY, empty } from 'rxjs';
 import { User } from 'src/app/core/Models';
 
 @Component({
@@ -12,7 +13,9 @@ export class AddUserComponent implements OnInit{
   userForm: FormGroup;
 
   user: User = new User({
-    "id" : null
+    "id" : null,
+    "email": null,
+    "password": null
   });
 
   private emailPattern: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -27,12 +30,15 @@ export class AddUserComponent implements OnInit{
 
   @Output() public userToCreate: EventEmitter<User> = new EventEmitter();
 
-  public createUser(){
-    
+  public createUser() {
     this.user.email = this.userForm.value.email;
     this.user.password = this.userForm.value.password;
-    if(this.user.email != null && this.user.password != null) {
+  
+    if (this.user.email && this.user.password) {
+      console.log(this.user);
       this.userToCreate.emit(this.user);
+    } else {
+      alert("Complete both fields");
     }
   }
 }

@@ -4,7 +4,7 @@ import { LandingComponent } from './components/landing/landing-component.compone
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { MainComponent } from 'src/app/components/main/main.component';
 import { HeroComponent } from 'src/app/components/hero/hero.component';
-import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { MainRoutingModule } from './landing-routing.module';
 import { CincoDiasComponent } from 'src/app/components/cinco-dias/cinco-dias.component';
 import { ChatComponent } from 'src/app/components/a-side/a-side.component';

@@ -1,4 +1,5 @@
 <div class="custom-container">
     <app-view-users class="custom-component" [inputUsers]="users" (userToEdit)="editUser($event)" (userToDelete)="deleteUser($event)"></app-view-users>
     <app-add-user class="custom-component" (userToCreate)="createUser($event)"></app-add-user>
-  </div>
+</div>
+<app-footer></app-footer>

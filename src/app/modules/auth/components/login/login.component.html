@@ -1,15 +1,13 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
+<div class="container">
+  <div class="row justify-content-center ">
+    <div class="col-md-6 personalized-login">
       <div class="login-container">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-4">
 
-          <!-- Email Field -->
           <div class="mb-3">
             <label for="email" class="form-label">Email:</label>
-            <input type="text" id="email" formControlName="email" placeholder="Ingresa tu email" class="form-control"/>
+            <input type="text" id="email" formControlName="email" placeholder="Email" class="form-control"/>
 
-            <!-- Error Messages for Email -->
             <span *ngIf="isValidFiled('email')" class="error-message">
               {{ getFieldError("email") }}
             </span>
@@ -20,27 +18,25 @@
                 loginForm.get('email')!.touched
               "
               class="error-message">
-              Formato de email invalido
+              Wrong email format
             </span>
           </div>
 
-          <!-- Password Field -->
           <div class="mb-3">
-            <label for="password" class="form-label">Contraseña:</label>
-            <input type="password" formControlName="password" placeholder="Ingresa tu contraseña" class="form-control"/>
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" formControlName="password" placeholder="Password" class="form-control"/>
 
-            <!-- Error Messages for Password -->
             <span *ngIf="isValidFiled('password')" class="error-message">
               {{ getFieldError("password") }}
             </span>
           </div>
 
-          <!-- Login Button -->
-          <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Iniciar Sesión</button>
-
-          <!-- Register Button -->
-          <button type="button" class="btn btn-secondary ms-2" (click)="onRegister()">Registrarse</button>
+          <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+          <button type="button" class="btn btn-secondary ms-2" (click)="onRegister()">Register</button>
         </form>
+      </div>
+      <div class="col-md-6">
+        <img [src]="loginImage" alt="login image" class="personalized">
       </div>
     </div>
   </div>

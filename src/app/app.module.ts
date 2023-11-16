@@ -17,31 +17,33 @@ import { ViewUsersComponent } from './components/users/view-users/view-users.com
 import { UserManagmentComponent } from './components/users/user-managment/user-managment.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EditUserComponent } from './components/users/edit-user/edit-user.component';
+import { MainModule } from "./modules/landing/landing.module";
 
 
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NotFoundComponent,
-    AddUserComponent,
-    ViewUsersComponent,
-    UserManagmentComponent,
-    EditUserComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    AuthModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NoopAnimationsModule,
-    MatDialogModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NotFoundComponent,
+        AddUserComponent,
+        ViewUsersComponent,
+        UserManagmentComponent,
+        EditUserComponent,
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        AuthModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NoopAnimationsModule,
+        MatDialogModule,
+        MainModule
+    ]
 })
 export class AppModule { }

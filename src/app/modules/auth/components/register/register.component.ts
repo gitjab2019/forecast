@@ -11,20 +11,11 @@ import { ApiService } from 'src/app/core/services/api-service/api.service';
 })
 export class RegisterComponent implements OnInit{
 
-  //userForm!: FormGroup;
-
   public user: User = new User({ id: null });
 
   private emailPattern: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {}
-
- /* ngOnInit(): void {
-    this.userForm = this.fb.group({
-      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-    })
-  } */
 
   public userForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -45,14 +36,14 @@ export class RegisterComponent implements OnInit{
   addUser(user: User) {
     this.apiService.addUser(user).subscribe({
       next: () => {
-        alert("Register complete");
+        console.log("Register complete");
       },
-      error: () => alert("Wrond register")
+      error: () => console.log("Wrong register")
     })
   }
 
   goToLogin() {
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/auth/login"]);
   }
 
 }

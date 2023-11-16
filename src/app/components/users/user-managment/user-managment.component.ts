@@ -26,7 +26,7 @@ export class UserManagmentComponent implements OnInit {
           this.users = data;
       },
       error => {
-        console.error('Error al obtener usuarios', error);
+        console.error('Error during users obtain', error);
       }
     )
   }
@@ -35,18 +35,18 @@ export class UserManagmentComponent implements OnInit {
     this.apiService.deleteUser(id).subscribe({
       next: ()=>{
         this.searchUsers();
-        alert("Usuario eliminado con exito");
+        alert("User deleted");
       },
-      error: ()=> alert("No se ha podido eliminar el usuario")
+      error: ()=> alert("Cant delete user")
     })
   }
 
   public editUser(user: User) {
 
     const dialogRef = this.dialog.open(EditUserComponent, { data: user, height: '400px', width: '350px' });
-
+    console.log(user.email + 'asdasds')
     dialogRef.afterClosed().subscribe(result => {
-      console.log('El cuadro de diálogo se cerró con resultado:', result);
+      console.log('Dialog box closed:', result);
     });
   }
 
@@ -54,9 +54,9 @@ export class UserManagmentComponent implements OnInit {
     this.apiService.addUser(user).subscribe({
       next: () => {
         this.searchUsers();
-        alert("Usuario creado con exito");
+        console.log("User created");
       },
-      error: () => alert("No se pudo crear el usuario")
+      error: () => console.log("Cant create user")
     })
   } 
 

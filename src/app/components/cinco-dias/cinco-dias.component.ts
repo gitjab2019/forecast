@@ -17,6 +17,12 @@ export class CincoDiasComponent {
     this.inicializarFechas();
   }
 
+  ngOnInit() {
+    this.datoPronostico.get5dias().subscribe((data: any) => {
+      this.pronostico = data.DailyForecasts;
+    });  
+  }
+
   inicializarFechas() {
     const hoy = new Date();
 
@@ -31,9 +37,4 @@ export class CincoDiasComponent {
     this.seleccionDiaService.setDiaSeleccionado(dia);
   }
 
-  ngOnInit() {
-    this.datoPronostico.get5dias().subscribe((data: any) => {
-      this.pronostico = data.DailyForecasts;
-    });  
-  }
 }

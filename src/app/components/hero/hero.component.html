@@ -1,5 +1,4 @@
-
-<div class="hero">
+<div class="d-flex justify-content-center align-items-center">
   <div class="heroContainer" id="hContainer">
     <div class="heroMain">
         <h2 class="city">Mar del Plata</h2>
@@ -10,14 +9,15 @@
             {{pronostico[diaSeleccionado].Day.IconPhrase}}
         </div>
         <div class="heroLabel" [ngStyle]="{'background-image': 'url(assets/images/' + fondoImagen + ')'}">
-          <div class="heroCard" id="min">Mínima: {{convertirACelcius(pronostico[diaSeleccionado].Temperature.Minimum.Value)}}°C</div>
-          <div class="heroCard" id="max">Máxima: {{convertirACelcius(pronostico[diaSeleccionado].Temperature.Maximum.Value)}}°C</div>
-          <div class="heroCard" id="dia">Día: {{pronostico[diaSeleccionado].Day.IconPhrase}}</div>
-          <div class="heroCard" id="noche">Nocturno: {{pronostico[diaSeleccionado].Night.IconPhrase}}</div>
+            <div class="heroCard" id="min">Minimun: {{convertirACelcius(pronostico[diaSeleccionado].Temperature.Minimum.Value)}}°C</div>
+            <div class="heroCard" id="max">Maximum: {{convertirACelcius(pronostico[diaSeleccionado].Temperature.Maximum.Value)}}°C</div>
+            <div class="heroCard" id="dia">Day: {{pronostico[diaSeleccionado].Day.IconPhrase}}</div>
+            <div class="heroCard" id="noche">Night: {{pronostico[diaSeleccionado].Night.IconPhrase}}</div>
         </div>
       </div>
     </div>
 </div>
+
   
   
   
