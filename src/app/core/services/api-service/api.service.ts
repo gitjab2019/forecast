@@ -14,7 +14,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-    //! Users
+    // Users
 
     public getToAuth(email: string, password: string): Observable<User[]> {
       return this.http.get<User[]>(`${this.baseURL}/users?email=${email}&password=${password}`)
@@ -50,32 +50,14 @@ export class ApiService {
       console.log(id)
       return this.http.delete(`${this.baseURL}/users/${id}`)
       .pipe(
-        map(resp => true), // Si sale bien retorna true. Recibir un response significa que salio bien
-        catchError(error => of(false)) // Si hay algun error en la solicitud me regresa falso
+        map(resp => true),
+        catchError(error => of(false))
       );
     }
 
-    editUser(id: number, updateUser: User): Observable<boolean | string> {
-      console.log(updateUser.email)
-      return this.validateExistingEmail(updateUser.email!).pipe(
-        switchMap(isValid => {
-          if (isValid) {
-            const url = `${this.baseURL}/users/${id}`;
-            return this.http.put<boolean>(url, updateUser).pipe(
-              catchError(error => {
-                console.error('Error during user edit', error);
-                return throwError(() => error);
-              })
-            );
-          } else {
-            return throwError('This email already exists');
-          }
-        }),
-        catchError(error => {
-          console.error('Error during email validation', error);
-          return throwError(() => error);
-        })
-      );
+    public editUser(id: number, updateUser: User): Observable<boolean> {
+      const url = `${this.baseURL}/users/${id}`;
+      return this.http.put<boolean>(url, updateUser);
     }
 
     public validateExistingEmail(email: string): Observable<boolean> {

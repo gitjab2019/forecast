@@ -7,13 +7,8 @@
     },
     {
       "id": 2,
-      "email": "pepito@gmail.com",
-      "password": "pepito123"
-    },
-    {
-      "email": "admin@gmail.com",
-      "password": "userTest12345",
-      "id": 3
+      "email": "user@gmail.com",
+      "password": "user123"
     }
   ]
 }

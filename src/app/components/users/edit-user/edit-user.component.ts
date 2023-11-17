@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 import { User } from 'src/app/core/Models';
 import { ApiService } from 'src/app/core/services/api-service/api.service';
 
@@ -43,14 +44,13 @@ export class EditUserComponent implements OnInit{
     }
   }
   
-  public editUser() {
+   public editUser() {
     this.apiService.editUser(this.user.id!, this.user).subscribe({
       next: () => this.dialogRef.close(true),
-      error: (error) => {
-        console.log("Wrong register")
-      }
-    });
-  }
+      error: (error) => alert(error)
+    })
+  } 
+
 
   public closeDialog(){
     this.dialogRef.close(false);

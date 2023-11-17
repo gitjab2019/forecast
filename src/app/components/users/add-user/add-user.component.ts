@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EMPTY, empty } from 'rxjs';
 import { User } from 'src/app/core/Models';
 
 @Component({
@@ -31,14 +30,29 @@ export class AddUserComponent implements OnInit{
   @Output() public userToCreate: EventEmitter<User> = new EventEmitter();
 
   public createUser() {
-    this.user.email = this.userForm.value.email;
-    this.user.password = this.userForm.value.password;
+    if(this.userForm.valid) {
+      this.user.email = this.userForm.value.email;
+      this.user.password = this.userForm.value.password;
   
-    if (this.user.email && this.user.password) {
-      console.log(this.user);
-      this.userToCreate.emit(this.user);
+      if (this.user.email && this.user.password) {
+
+        this.userToCreate.emit(this.user);
+        console.log('Valid');
+        this.userForm.reset();
+
+      } else {
+        alert("Complete both fields");
+      }
     } else {
-      alert("Complete both fields");
+      console.log('Not valid');
     }
+  }
+
+  get email() {
+    return this.userForm.get('email')!;
+  }
+
+  get password() {
+    return this.userForm.get('password')!;
   }
 }

@@ -1,23 +1,28 @@
 <div class="container">
-    <h2 class="custom-dialog-title">Add User</h2>
-    <form novalidate (ngSubmit)="createUser()" [formGroup]="userForm" autocomplete="off" class="login-form">
-  
+  <h2 class="custom-dialog-title">Add User</h2>
+  <form novalidate (ngSubmit)="createUser()" [formGroup]="userForm" autocomplete="off" class="login-form">
       <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" formControlName="email" class="form-control" required>
+          <label for="email" class="letter">Email:</label>
+          <input type="email" id="email" name="email" formControlName="email" class="form-control" required>
+          <div class="alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <div *ngIf="userForm.get('email')!.hasError('required')">*Required email</div>
+              <div *ngIf="userForm.get('email')!.hasError('pattern')">*Invalid email</div>
+          </div>
       </div>
-      <div class="error" *ngIf="userForm.get('email')!.hasError('required')">Required email</div>
+
       <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" formControlName="password" class="form-control" required>
+          <label for="password" class="letter">Password:</label>
+          <input type="password" id="password" name="password" formControlName="password" class="form-control" required>
+          <div class="alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+              <div *ngIf="userForm.get('password')!.hasError('required')">*Required password</div>
+              <div *ngIf="userForm.get('password')!.hasError('minlength')">*Minimum 6 characters</div>
+          </div>
       </div>
-      <div class="error" *ngIf="userForm.get('password')!.hasError('required')">Required password</div>
-  
+
       <button type="submit" class="btn btn-primary btnadd">Create user</button>
-    </form>
+  </form>
 </div>
 
-  
   
   
   

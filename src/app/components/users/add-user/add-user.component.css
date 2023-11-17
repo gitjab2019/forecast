@@ -6,3 +6,12 @@
     margin-top: 5px;
     margin: 5px;
 }
+
+.alert-danger {
+    color:red;
+    margin-bottom: 5px;
+}
+
+.letter {
+    font-size: 16px;
+}
