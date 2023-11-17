@@ -30,7 +30,6 @@ export class ChatComponent implements OnInit {
   constructor(private gpt: ChatgptService, private datoPronostico: PronosticoService, private seleccionDiaService: SeleccionDiaService) 
   {}
 
-  //IMPORTANTE!!!! --> SE DEBE UNIR apiKeyFirstPart + apiKeySecondPart (estan arriba)
   configuration = {
     apiKey: this.apiKeyFirstPart + this.apiKeySecondPart
   };
