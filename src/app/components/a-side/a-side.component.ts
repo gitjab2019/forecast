@@ -24,9 +24,9 @@ export class ChatComponent implements OnInit {
   diaSeleccionado: number = 0;
   isLoading: boolean = true;
   mensajeCargado: boolean = false;
-  apiKeyFirstPart = 'sk-kZF0PpZjoWwqsfo3lFb';
-  apiKeySecondPart = 'AT3BlbkFJjBZevpZgeYo4i3ZYVPuP';
-
+  apiKeyFirstPart = 'sk-oEqa0eEPj2zSGeuNPVZBT3';
+  apiKeySecondPart = 'BlbkFJ6bA0wG04byn3mASFl9Q9';
+  
   constructor(private gpt: ChatgptService, private datoPronostico: PronosticoService, private seleccionDiaService: SeleccionDiaService) 
   {}
 

@@ -6,8 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ChatgptService {
 
-  apiKeyFirstPart = 'sk-kZF0PpZjoWwqsfo3lFb';
-  apiKeySecondPart = 'AT3BlbkFJjBZevpZgeYo4i3ZYVPuP';
+  apiKeyFirstPart = 'sk-oEqa0eEPj2zSGeuNPVZBT3';
+  apiKeySecondPart = 'BlbkFJ6bA0wG04byn3mASFl9Q9';
 
   header = new HttpHeaders({
     "Content-Type": "application/json",
