@@ -9,6 +9,16 @@
       "id": 2,
       "email": "user@gmail.com",
       "password": "user123"
+    },
+    {
+      "id": 3,
+      "email": "julian@gmail.com",
+      "password": "admin123"
+    },
+    {
+      "id": 4,
+      "email": "pedro@gmai.com",
+      "password": "pedro123"
     }
   ]
 }

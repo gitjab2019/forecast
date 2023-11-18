@@ -26,17 +26,25 @@ export class RegisterComponent implements OnInit{
   }
 
   onSubmit() {
-      this.user.email = this.userForm.value.email;
-      this.user.password = this.userForm.value.password;
-      if(this.user.email != null && this.user.password != null) {
-        this.addUser(this.user);
-      }
+    if(this.userForm.valid) {
+        this.user.email = this.userForm.value.email;
+        this.user.password = this.userForm.value.password;
+        if(this.user.email != null && this.user.password != null) {
+          this.addUser(this.user);
+          this.userForm.reset();
+        } else {
+          alert('Complete both fields')
+        }
+    } else {
+      console.log('Not valid');
+    }
   }
 
   addUser(user: User) {
     this.apiService.addUser(user).subscribe({
       next: () => {
         console.log("Register complete");
+        alert('Successful register')
       },
       error: () => console.log("Wrong register")
     })
@@ -44,6 +52,14 @@ export class RegisterComponent implements OnInit{
 
   goToLogin() {
     this.router.navigate(["/auth/login"]);
+  }
+
+  get email() {
+    return this.userForm.get('email')!;
+  }
+
+  get password() {
+    return this.userForm.get('password')!;
   }
 
 }
